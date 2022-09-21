@@ -8,12 +8,11 @@ const db = admin.firestore();
 router.post("/api/marcas", async (req, res) => {
 
 	try {
+		const body = req.body;
+		body.fecha = new Date()
 		await db.collection("marcas")
     .doc()
-    .create(req.body)
-    // .create({
-    //     prueba: req.body.nombre,
-    // });
+    .create(body)
 	
 		return res.status(204).json();
 		
